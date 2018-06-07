@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="de">
-{{partial "head" . }}
+{{partial "head-site" . }}
 <body>
 <div class="container">
   {{ partial "header" . }}
@@ -8,7 +8,8 @@
   <div class="main">
     <h1>Seiten</h1>
     <div class="cards">
-      {{ range first 10 .Data.Pages }}
+      <div class="cards-sizer"></div>
+      {{ range first 50 .Data.Pages }}
         {{ .Render "card"}}
       {{ end }}
     </div>

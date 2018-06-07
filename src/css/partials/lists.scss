@@ -1,11 +1,8 @@
 .main {
 
   .cards {
-    display: block;
-    width: 100%;
     margin: 0 auto;
     padding: 0;
-    text-align: center;
 
     @include media("<=phone") {
       margin: 0;
@@ -14,46 +11,135 @@
 
   }
 
+  /* card sizing */
+  .cards-sizer, .card {
+    width: 33.333%; // 3 cols
+
+    @include media("<=phone") {
+      width: 100%; // 1 col
+    }
+
+    @include media(">phone", "<desktop") {
+      width: 50%; // 2 cols
+    }
+
+    @include media(">=desktop") {
+      width: 33.333%; // 3 cols
+    }
+  }
+
   .card {
-    text-align: left;
-    border: 1px solid $ultralightgray;
-    border-radius: 0.2em;
-    background: $white;
-    box-shadow: 0 0.2em 0.4em 0 rgba(0,0,0,0.05);
-    transition: $tr-scope $tr-speed $tr-mode;
-    padding: 0;
+    float: left;
+    padding: 10px;
 
-    /* card sizing */
-    width: 320px;
-
-    /* elevate card hover effect */
-    &:hover {
-      box-shadow: 0 0.3em 0.6em 0 rgba(0,0,0,0.15);
+    .inner {
+      border: 1px solid $ultralightgray;
+      box-shadow: 0 0.2em 0.4em 0 rgba(0,0,0,0.05);
       transition: $tr-scope $tr-speed $tr-mode;
-      background-color: lighten($ultralightgray, 3%);
-      border-color: darken($ultralightgray, 3%);
+
+      font-size: 90%;
+      line-height: 135%;
+
+      p {
+        margin: 0 0 0.4em 0;
+      }
+
+
+      /* preps for hover fill effect */
+      .summary {
+        transition: $tr-scope 250ms $tr-mode;
+        background-image: linear-gradient(lighten($ultralightgray, 3%), lighten($ultralightgray, 3%));
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        background-size: 100% 0;
+      }
+
+      /* elevate and fill card on hover effect */
+      &:hover {
+        transition: $tr-scope $tr-speed $tr-mode;
+        box-shadow: 0.06em 0.4em 0.7em 0 rgba(0,0,0,0.2);
+        border-color: darken($ultralightgray, 7%);
+
+        .summary {
+          transition: $tr-scope 200ms $tr-mode;
+          background-size: 100% 100%; // hover fill effect
+        }
+
+        h3 {
+          color: $red;
+          transition: color $tr-speed $tr-mode;
+        }
+
+        .featuredimage {
+          transition: $tr-scope $tr-speed $tr-mode;
+          filter: grayscale(0) opacity(1);
+          transform: scale(1.15);
+        }
+
+        .type, .date {
+          transition: filter $tr-speed $tr-mode;
+          filter: grayscale(0);
+        }
+
+      }
+
+      /* linking of the card */
+      &> a,
+      &> a:visited {
+        padding: 0;
+        display: block;
+        border: 0 none;
+        color: $darkgray;
+        text-decoration: none;
+        transition: $tr-scope $tr-speed $tr-mode;
+      }
+
+      article {
+        padding: 1em;
+      }
 
       h3 {
-        color: $red;
+        margin: 0 0 0.4em 0;
         transition: color $tr-speed $tr-mode;
       }
-    }
 
-    /* linking of the card */
-    &> a {
-      padding: 1em;
-      display: block;
-      color: $darkgray;
-      text-decoration: none;
-      transition: $tr-scope $tr-speed $tr-mode;
-    }
+      .featuredimage {
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        padding: 0;
+        background-color: $gray;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        transition: $tr-scope $tr-speed $tr-mode;
+        filter: grayscale(0.6) opacity(0.6);
 
-    h3 {
-      font-size: 1.3em;
-      margin: 0 0 0.8em 0;
-      transition: color $tr-speed $tr-mode;
-    }
+        height: 220px;
 
+        @include media("<=phone") {
+          height: 160px;
+        }
+
+        @include media(">phone", "<desktop") {
+          height: 180px;
+        }
+
+        @include media(">tablet", "<mega") {
+          height: 210px;
+        }
+
+      }
+
+      .imagebox {
+        overflow: hidden;
+      }
+
+      .type, .date {
+        filter: grayscale(0.9);
+        font-size: 1rem;
+      }
+    }
   }
 
 }

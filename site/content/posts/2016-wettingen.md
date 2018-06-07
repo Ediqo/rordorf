@@ -2,15 +2,16 @@
 title: "Impressionen aus dem Kloster Wettingen"
 date:  2016-06-12T18:34:02+01:00
 draft: false
-author: "Dietrich Rordorf"
+authors: ["Dietrich Rordorf"]
 tags: []
-image: ""
+image: "/images/uploads/wettingen.jpg"
 ---
 Hier einige Impressionen vom Klosterrundgang und dem Kreuzgang des Klosters Wettingen anschliesslich der diesjährigen Versammlung vom 5. Juni 2016.
 
 <!--more-->
 
-<div class="gallery width-400">
+<div class="gallery">
+    <div class="images-sizer"></div>
     <div class="image">
         <img alt="Ausflug Wettingen" src="/images/uploads/wettingen/01.jpg">
     </div>

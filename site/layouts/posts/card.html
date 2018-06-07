@@ -1,18 +1,25 @@
 <div class="card">
-    <a href="{{ .Permalink }}">
-        <article class="summary">
-            <h3>
-                {{ .Title}}
-            </h3>
-            <p>
-                {{ .Summary }}
-            </p>
-            <span class="type">
-                Beitrag
-            </span>
-            <span class="date">
+    <div class="inner">
+        <a href="{{ .Permalink }}">
+            {{ if .Params.image }}
+            <div class="imagebox">
+                <div class="featuredimage" style="background-image: url('{{ .Params.image }}') "></div>
+            </div>
+            {{ end }}
+            <article class="summary">
+                <h3>
+                    {{ .Title}}
+                </h3>
+                <p>
+                    {{ .Summary }}
+                </p>
+                <span class="type">
+                    Beitrag
+                </span>
+                <span class="date">
                 {{ .Date.Format "02.01.2006" }}
             </span>
-        </article>
-    </a>
+            </article>
+        </a>
+    </div>
 </div>

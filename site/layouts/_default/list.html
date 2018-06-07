@@ -1,13 +1,17 @@
 <!doctype html>
 <html lang="de">
-{{partial "head" . }}
+{{partial "head-site" . }}
 <body>
 <div class="container">
   {{ partial "header" . }}
   {{ partial "navbar" . }}
   <div class="main">
+    {{ if eq .Kind "taxonomy" }}
+      <h2>Beiträge: {{ .Title }}</h2>
+    {{ end }}
     <div class="cards">
-      {{ range first 10 .Data.Pages }}
+      <div class="cards-sizer"></div>
+      {{ range first 50 .Data.Pages }}
         {{ .Render "card"}}
       {{ end }}
     </div>
